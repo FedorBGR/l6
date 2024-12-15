@@ -42,6 +42,12 @@ public class ReminderDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public void deleteReminder(Reminder reminder) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("reminders", "id = ?", new String[]{String.valueOf(reminder.getId())});
+        db.close();
+    }
+
     // Метод для добавления напоминания
     public boolean addReminder(Reminder reminder) {
         SQLiteDatabase db = this.getWritableDatabase();
