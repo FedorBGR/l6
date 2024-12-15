@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 
 import java.util.Calendar;
 
@@ -32,6 +33,13 @@ public class AddReminderActivity extends AppCompatActivity {
     private int selectedHour, selectedMinute;
 
     private ReminderDatabaseHelper reminderDatabaseHelper; // Database helper
+
+    NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "reminder_channel")
+            .setSmallIcon(R.drawable.ic_notification) // Иконка для уведомления
+            .setContentTitle("Напоминание")
+            .setContentText("У вас есть новое напоминание!")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setAutoCancel(true);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
